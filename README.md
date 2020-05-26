@@ -1,6 +1,6 @@
 # MarchingCubes
 
-This is Marching Cubes Algorithm using gpu.Made with unity.
+This is Marching Cubes Algorithm using gpu.Made by Unity.
 I referred to here.
 http://www.cs.carleton.edu/cs_comps/0405/shape/marching_cubes.html
 
