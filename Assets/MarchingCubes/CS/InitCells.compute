@@ -1,0 +1,12 @@
+﻿#pragma kernel CSMain
+#include "Assets/CgIncludes/Noise.cginc"
+#include "Assets/CgIncludes/Random.cginc"
+#include "UnityCG.cginc" 
+
+RWStructuredBuffer<int> IndexsBuffer;
+
+[numthreads(8,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	IndexsBuffer[id.x] = 0;
+}

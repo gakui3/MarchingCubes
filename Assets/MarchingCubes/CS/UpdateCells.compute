@@ -1,0 +1,32 @@
+﻿#pragma kernel CSMain
+
+struct Cell{
+	float3 pos;
+	int ids[8];
+	float3 edgePos[12];
+};
+
+int StripCount;
+StructuredBuffer<int> IndexsBuffer;
+RWStructuredBuffer<Cell> CellsBuffer;
+
+
+int to1D(float3 p) {
+	int Max = StripCount;
+    float v = (p.z * Max * Max) + (p.y * Max) + p.x;
+    return (int)v;
+}
+
+[numthreads(8,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	float3 index = CellsBuffer[id.x].pos;
+	CellsBuffer[id.x].ids[0] = IndexsBuffer[to1D(float3(index.x, index.y, index.z+1))];
+	CellsBuffer[id.x].ids[1] = IndexsBuffer[to1D(float3(index.x+1, index.y, index.z+1))];
+	CellsBuffer[id.x].ids[2] = IndexsBuffer[to1D(float3(index.x+1, index.y, index.z))];
+	CellsBuffer[id.x].ids[3] = IndexsBuffer[to1D(float3(index.x, index.y, index.z))];
+	CellsBuffer[id.x].ids[4] = IndexsBuffer[to1D(float3(index.x, index.y+1, index.z+1))];
+	CellsBuffer[id.x].ids[5] = IndexsBuffer[to1D(float3(index.x+1, index.y+1, index.z+1))];
+	CellsBuffer[id.x].ids[6] = IndexsBuffer[to1D(float3(index.x+1, index.y+1, index.z))];
+	CellsBuffer[id.x].ids[7] = IndexsBuffer[to1D(float3(index.x, index.y+1, index.z))];
+}
