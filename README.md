@@ -1,6 +1,6 @@
 # MarchingCubes
 
-Implementation of the Martin Cubes algorithm.made by Unity.  
+Implementation of the MarchingCubes algorithm.made by Unity.  
 I referred to here.  
 
 http://www.cs.carleton.edu/cs_comps/0405/shape/marching_cubes.html
