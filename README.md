@@ -1,6 +1,6 @@
 # MarchingCubes
 
-Implementation of the MarchingCubes algorithm.made by Unity.  
+Implement the MarchingCubes algorithm. Use a compute shader.made by Unity.  
 I referred to here.  
 
 http://www.cs.carleton.edu/cs_comps/0405/shape/marching_cubes.html
